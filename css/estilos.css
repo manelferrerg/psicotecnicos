@@ -1,0 +1,496 @@
+/*
+ * estilos.css - PsicoTec
+ * Fondo blanco, fuentes del sistema, contraste AA, foco visible y botones de al menos 44 px.
+ * Diseñado desde 360 px de ancho.
+ */
+
+:root {
+  color-scheme: light;
+  --fondo: #ffffff;
+  --texto: #111827;
+  --texto-suave: #4b5563;
+  --borde: #d1d5db;
+  --borde-suave: #e5e7eb;
+  --borde-fuerte: #9ca3af;
+  --gris-claro: #f9fafb;
+  --primario: #1d4ed8;
+  --primario-oscuro: #1e40af;
+  --primario-claro: #eff6ff;
+  --exito: #15803d;
+  --exito-texto: #14532d;
+  --exito-claro: #f0fdf4;
+  --error: #b91c1c;
+  --error-texto: #7f1d1d;
+  --error-claro: #fef2f2;
+  --aviso: #b45309;
+  --aviso-texto: #78350f;
+  --aviso-claro: #fffbeb;
+  --foco: #2563eb;
+  --radio: 12px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--fondo); }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+#app-root {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 16px 48px;
+}
+
+h1, h2, h3 { line-height: 1.25; }
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.2rem; }
+p { margin: 0 0 12px; }
+ul { margin: 0 0 12px; padding-left: 1.25rem; }
+li { margin: 4px 0; }
+
+:focus-visible { outline: 3px solid var(--foco); outline-offset: 2px; }
+[tabindex="-1"]:focus { outline: none; }
+
+/* ------------------------------------------------------------ cabecera */
+
+.app-header {
+  border-bottom: 1px solid var(--borde-suave);
+  padding: 8px 0;
+  margin-bottom: 16px;
+}
+
+.app-header-fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 4px 6px 4px 0;
+  border: 0;
+  background: none;
+  color: var(--texto);
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.marca-icono { width: 28px; height: 28px; flex: none; display: block; }
+
+.nav-principal { display: flex; flex-wrap: wrap; gap: 0 2px; }
+
+.subtitulo { margin: 4px 0 0; color: var(--texto-suave); font-size: 0.95rem; }
+
+/* ------------------------------------------------------------ botones */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 20px;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn-principal { background: var(--primario); color: #ffffff; }
+.btn-principal:hover { background: var(--primario-oscuro); }
+.btn-secundario { background: #ffffff; color: var(--primario); border-color: var(--primario); }
+.btn-secundario:hover { background: var(--primario-claro); }
+.btn-peligro { background: var(--error); color: #ffffff; }
+.btn-peligro:hover { background: #991b1b; }
+.btn:disabled { opacity: 0.5; cursor: default; }
+
+.btn-enlace {
+  min-height: 44px;
+  padding: 8px 8px;
+  border: 0;
+  background: none;
+  color: var(--primario);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.btn-enlace:hover { color: var(--primario-oscuro); }
+
+/* ------------------------------------------------------------ estructura */
+
+.titulo-vista { margin: 8px 0 12px; }
+
+.tarjeta {
+  margin: 0 0 16px;
+  padding: 16px;
+  border: 1px solid var(--borde);
+  border-radius: 14px;
+  background: #ffffff;
+}
+.tarjeta > h1:first-child,
+.tarjeta > h2:first-child { margin-top: 0; }
+
+.grid-areas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.tarjeta-area { display: flex; flex-direction: column; margin: 0; }
+.nombre-area { margin: 0 0 6px; }
+.desc-area { color: var(--texto-suave); }
+.nivel-area { font-weight: 600; }
+.acciones-area { margin-top: auto; }
+
+.acciones,
+.acciones-area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.modo-actual { color: var(--texto-suave); margin-bottom: 12px; }
+.modo-actual .btn-enlace { padding-left: 4px; }
+
+.mensajes:empty { display: none; }
+.mensaje {
+  margin: 0 0 12px;
+  padding: 12px 14px;
+  border-left: 4px solid;
+  border-radius: 8px;
+}
+.mensaje-info { background: var(--primario-claro); border-color: var(--primario); color: var(--texto); }
+.mensaje-aviso { background: var(--aviso-claro); border-color: var(--aviso); color: var(--aviso-texto); }
+.mensaje-exito { background: var(--exito-claro); border-color: var(--exito); color: var(--exito-texto); }
+
+.nota-pequena { color: var(--texto-suave); font-size: 0.875rem; }
+
+.pie-aviso {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde-suave);
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
+.pie-version { font-size: 0.8rem; }
+
+/* ------------------------------------------------------------ progreso y reloj */
+
+.barra-progreso-texto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 12px;
+  margin: 4px 0 6px;
+  color: var(--texto-suave);
+  font-size: 0.95rem;
+}
+
+.barra-progreso {
+  height: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: var(--borde-suave);
+}
+.barra-progreso-relleno { height: 100%; background: var(--primario); transition: width 0.2s ease; }
+
+.reloj { color: var(--texto); font-weight: 700; font-variant-numeric: tabular-nums; }
+.reloj-urgente { color: var(--error); }
+
+/* ------------------------------------------------------------ pregunta y estímulo */
+
+.tarjeta-pregunta .enunciado { margin: 0 0 12px; font-size: 1.15rem; }
+
+.estimulo { margin: 0 0 16px; }
+
+/* La serie se lee de izquierda a derecha; en móvil pasa a filas de 3 figuras. */
+.fila-figuras {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.fila-figuras > .caja-figura { flex: 0 1 84px; min-width: 72px; }
+
+.matriz {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 104px));
+  justify-content: center;
+  gap: 8px;
+}
+
+.analogia {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 32px;
+}
+.par {
+  display: grid;
+  grid-template-columns: minmax(0, 104px) auto minmax(0, 104px);
+  align-items: center;
+  gap: 8px;
+  width: min(100%, 260px);
+}
+.flecha { color: var(--texto-suave); font-size: 1.5rem; text-align: center; }
+
+.caja-figura {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 5 / 7;
+  padding: 4px;
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  background: #ffffff;
+}
+.caja-figura .figura { display: block; width: 100%; height: auto; }
+
+.incognita {
+  border: 2px dashed var(--borde-fuerte);
+  color: var(--texto-suave);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.etiqueta-figura {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  color: var(--texto-suave);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.texto-grande {
+  margin: 8px 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  word-spacing: 0.12em;
+  overflow-wrap: anywhere;
+}
+
+.texto-problema { margin: 0; font-size: 1.1rem; line-height: 1.6; }
+
+/* ------------------------------------------------------------ opciones */
+
+.opciones {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.opcion {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 12px;
+  border: 2px solid var(--borde);
+  border-radius: var(--radio);
+  background: #ffffff;
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+button.opcion:not(:disabled):hover { border-color: var(--primario); background: var(--primario-claro); }
+.opcion:disabled { opacity: 1; cursor: default; color: var(--texto); }
+.opciones-revision .opcion { cursor: default; }
+
+.opcion-num {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  color: var(--texto);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.opcion-contenido { display: block; flex: 1; min-width: 0; }
+.opcion-texto { font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+.opciones-figura .opcion { flex-direction: column; align-items: stretch; padding: 8px; }
+.opciones-figura .opcion-num { position: absolute; top: 6px; left: 6px; }
+.opciones-figura .opcion-contenido .figura { display: block; width: 100%; max-width: 104px; height: auto; margin: 0 auto; }
+
+.opcion-marca { font-size: 0.85rem; font-weight: 700; }
+.opcion-marca:empty { display: none; }
+.opciones-figura .opcion-marca { text-align: center; }
+
+.opcion.es-correcta { border-color: var(--exito); background: var(--exito-claro); }
+.opcion.es-correcta .opcion-marca { color: var(--exito); }
+.opcion.es-elegida { border-color: var(--error); background: var(--error-claro); }
+.opcion.es-elegida .opcion-marca { color: var(--error); }
+.opcion.atenuada { opacity: 0.6; }
+
+.acciones-pregunta { display: flex; justify-content: flex-end; margin-top: 12px; }
+
+.feedback:empty { display: none; }
+.feedback { margin-top: 12px; padding: 12px; border-radius: 10px; }
+.feedback p { margin: 0 0 10px; font-weight: 700; }
+.feedback-acierto { background: var(--exito-claro); color: var(--exito-texto); }
+.feedback-error { background: var(--error-claro); color: var(--error-texto); }
+.feedback-omitida { background: var(--aviso-claro); color: var(--aviso-texto); }
+
+/* ------------------------------------------------------------ resultados */
+
+.subtitulo-seccion { margin: 20px 0 8px; font-size: 1.05rem; }
+
+.grid-datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+}
+.dato {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  border: 1px solid var(--borde-suave);
+  border-radius: 10px;
+  background: var(--gris-claro);
+}
+.dato-etiqueta { color: var(--texto-suave); font-size: 0.85rem; }
+.dato-valor { font-size: 1.3rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.dato-ayuda { color: var(--texto-suave); font-size: 0.8rem; }
+
+.resultado-destacado { color: var(--primario); font-size: 1.3rem; font-weight: 700; }
+
+.tarjeta-recordatorio {
+  margin: 16px 0;
+  padding: 14px;
+  border: 1px solid #f59e0b;
+  border-radius: var(--radio);
+  background: var(--aviso-claro);
+}
+.tarjeta-recordatorio h2 { margin: 0 0 8px; font-size: 1.05rem; }
+
+/* ------------------------------------------------------------ revisión */
+
+.tarjeta-revision { border-left-width: 6px; }
+.rev-acierto { border-left-color: var(--exito); }
+.rev-fallo { border-left-color: var(--error); }
+.rev-titulo { margin: 0 0 8px; font-size: 1.05rem; }
+
+.error-distractor {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--error-claro);
+  color: var(--error-texto);
+}
+
+.explicacion {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 6px 12px;
+  margin: 12px 0 8px;
+}
+.explicacion dt { font-weight: 700; }
+.explicacion dd { margin: 0; }
+
+/* ------------------------------------------------------------ historial y gráfica */
+
+.grafico { margin: 8px 0 12px; }
+.grafico-svg { display: block; width: 100%; max-width: 560px; height: auto; }
+.grafico-rejilla { stroke: var(--borde-suave); stroke-width: 1; }
+.grafico-eje { fill: var(--texto-suave); font-size: 12px; }
+.grafico-umbral { stroke: var(--exito); stroke-width: 1.5; stroke-dasharray: 6 4; }
+.grafico-linea { fill: none; stroke: var(--primario); stroke-width: 2.5; stroke-linejoin: round; }
+.grafico-punto { fill: var(--primario); }
+.grafico-valor { fill: var(--texto); font-size: 12px; font-weight: 700; }
+
+.lista-sesiones { padding-left: 1.1rem; }
+.fecha { color: var(--texto-suave); font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------------ datos y ajustes */
+
+.grupo-radio { margin: 0 0 8px; padding: 0; border: 0; }
+.opcion-radio { display: flex; align-items: center; gap: 10px; min-height: 44px; }
+.opcion-radio input { flex: none; width: 22px; height: 22px; margin: 0; accent-color: var(--primario); }
+.opcion-radio label { cursor: pointer; }
+
+.etiqueta-archivo { display: block; margin-top: 8px; font-weight: 600; }
+.input-archivo { display: block; max-width: 100%; margin: 8px 0 12px; font: inherit; }
+
+.tarjeta-peligro { border-color: #fca5a5; }
+
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------------------ autodiagnóstico */
+
+.lista-diagnostico { margin: 12px 0; padding: 0; list-style: none; }
+.lista-diagnostico li { margin: 0; padding: 6px 0; border-bottom: 1px solid var(--borde-suave); }
+.lista-diagnostico li.fallo { color: var(--error); font-weight: 600; }
+
+.tabla-diagnostico {
+  padding: 12px;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: var(--gris-claro);
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  white-space: pre;
+}
+
+/* ------------------------------------------------------------ pantallas medianas y grandes */
+
+@media (min-width: 640px) {
+  .fila-figuras > .caja-figura { flex-basis: 100px; }
+  .opciones-figura { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .texto-grande { font-size: 1.9rem; }
+  .tarjeta { padding: 20px; }
+}
+
+@media (max-width: 420px) {
+  .explicacion { grid-template-columns: 1fr; gap: 2px; }
+  .explicacion dt { margin-top: 6px; }
+  .btn { width: 100%; }
+  .acciones-pregunta .btn { width: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barra-progreso-relleno { transition: none; }
+}
